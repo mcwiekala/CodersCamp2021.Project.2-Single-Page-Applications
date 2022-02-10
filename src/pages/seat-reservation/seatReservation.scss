@@ -1,0 +1,37 @@
+.movie-seats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-seats h2 {
+  color: white;
+}
+  
+.seats {
+  width: 900px;
+  height: 600px;
+  padding: 20px 25px 25px 40px;
+  background-color: #222;
+  display: grid;
+  grid: repeat(9, 60px) / auto-flow 60px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: white;
+  border: none;
+  display: block;
+}
+.reservationButton {
+  background-color: #222;
+  padding: 20px 30px;
+  border: none;
+  color: white;
+  margin-top: 20px;
+  border-radius: 10px;
+}

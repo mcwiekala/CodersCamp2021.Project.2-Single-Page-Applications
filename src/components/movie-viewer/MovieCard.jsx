@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./style/Movie.scss";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import FilmShowing from "../showings/FilmShowing";
 
 export default function Movie({
@@ -15,6 +16,13 @@ export default function Movie({
   rating,
   votes,
 }) {
+  const [logged, setLogged] = useState();
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, (user) => {
+    setLogged(user);
+  });
+
   return (
     <div className="movie-wrapper">
       <div className="movie__poster">
@@ -28,7 +36,8 @@ export default function Movie({
           {genre} | {rated === "R" ? "18+" : rated} | {runtime}
         </h4>
         <p>{plot}</p>
-        <FilmShowing movieId={id} />
+
+        {logged && <FilmShowing movieId={id} />}
       </div>
       <div className="movie-report">
         <div className="movie-report__rating">{rating}</div>
